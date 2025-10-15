@@ -3,12 +3,18 @@ const message = document.getElementById('message');
 let currentPlayer = 'X';
 let gameActive = true;
 let cells = ["", "", "", "", "", "", "", "", ""];
+let scoreX = 0;
+let scoreO = 0;
 
 function createBoard() {
   board.innerHTML = '';
   cells.forEach((cell, index) => {
     const div = document.createElement('div');
     div.classList.add('cell');
+
+    if (cell === 'X') div.classList.add('x');
+    if (cell === 'O') div.classList.add('o');
+
     div.addEventListener('click', () => makeMove(index));
     div.textContent = cell;
     board.appendChild(div);
@@ -24,6 +30,13 @@ function makeMove(index) {
   if (checkWinner()) {
     message.textContent = `🎉 ¡Jugador ${currentPlayer} ganó!`;
     gameActive = false;
+    if (currentPlayer === 'X') {
+      scoreX++;
+      document.getElementById('scoreX').textContent = scoreX;
+    } else {
+      scoreO++;
+      document.getElementById('scoreO').textContent = scoreO;
+    }
     return;
   }
 
@@ -61,5 +74,7 @@ function resetGame() {
   createBoard();
 }
 
+// Inicialización
 createBoard();
 message.textContent = `Turno del jugador ${currentPlayer}`;
+
