@@ -25,11 +25,22 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
+  user-select: none;
 }
 
 .cell:hover {
   background-color: #eaeaea;
+}
+
+.cell.x {
+  color: #2196f3; /* azul */
+  font-weight: bold;
+}
+
+.cell.o {
+  color: #f44336; /* rojo */
+  font-weight: bold;
 }
 
 #message {
@@ -53,3 +64,4 @@ button {
 button:hover {
   background-color: #45a049;
 }
+

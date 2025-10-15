@@ -9,6 +9,10 @@ function createBoard() {
   cells.forEach((cell, index) => {
     const div = document.createElement('div');
     div.classList.add('cell');
+
+    if (cell === 'X') div.classList.add('x');
+    if (cell === 'O') div.classList.add('o');
+
     div.addEventListener('click', () => makeMove(index));
     div.textContent = cell;
     board.appendChild(div);
